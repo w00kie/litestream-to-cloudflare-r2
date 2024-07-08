@@ -1,0 +1,14 @@
+services:
+  litestream:
+    image: litestream/litestream
+    environment:
+      - SQLITE_DATABASE_PATH
+      - CLOUDFLARE_R2_ACCOUNT_ID
+      - CLOUDFLARE_R2_BUCKET_NAME
+      - CLOUDFLARE_R2_ACCESS_KEY_ID
+      - CLOUDFLARE_R2_SECRET_ACCESS_KEY
+    volumes:
+      - './:/opt/litestream'
+      # Data volume to be configured within Coolify
+    entrypoint: /bin/sh
+    command: '-c "/usr/local/bin/litestream replicate -config /opt/litestream/litestream.yaml"'
