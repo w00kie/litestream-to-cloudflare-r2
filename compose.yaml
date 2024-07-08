@@ -8,7 +8,7 @@ services:
       - CLOUDFLARE_R2_ACCESS_KEY_ID
       - CLOUDFLARE_R2_SECRET_ACCESS_KEY
     volumes:
-      - './:/opt/litestream'
-      - '${DB_STORAGE}:/data'
+      - ./:/opt/litestream
+      - ${DB_STORAGE}:/data
     entrypoint: /bin/sh
     command: '-c "/usr/local/bin/litestream replicate -config /opt/litestream/litestream.yaml"'
