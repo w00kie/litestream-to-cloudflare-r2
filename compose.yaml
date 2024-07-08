@@ -9,6 +9,6 @@ services:
       - CLOUDFLARE_R2_SECRET_ACCESS_KEY
     volumes:
       - './:/opt/litestream'
-      # Data volume to be configured within Coolify
+      - '${DB_STORAGE}:/data'
     entrypoint: /bin/sh
     command: '-c "/usr/local/bin/litestream replicate -config /opt/litestream/litestream.yaml"'
